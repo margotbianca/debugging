@@ -1,1 +1,1 @@
-<!-- parallax script was not added -->
+parallax script was not added -->
