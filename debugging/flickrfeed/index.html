@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>flickrfeed</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="author" content="The Chopping Block, Inc." />
+	<meta name="geo.country" content="US" />
+	<meta name="dc.language" content="en" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	
+	<link rel="stylesheet" href="styles.css" type="text/css" media="screen" charset="utf-8" />
+	
+	<style type="text/css" media="screen">		
+		/*local styles if any (quick tests and local only overrides)*/
+	</style>
+</head>
+<body>
+
+	<div class="wrap" >
+		
+	</div>
+	<span id="loadgallery">Load Gallery</span>
+	<span id="prev">Prev</span>
+	<span id="next">Next</span>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="jquery.cycle.all.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script type="text/javascript" charset="utf-8">
+
+		// $.ajax({
+		// 	url: "http://someurl"
+		// }).done(function(data){
+		// 	//do something with that data
+		// });
+
+			function makeAjaxRequest(){
+				$.ajax({
+					url: "http://api.flickr.com/services/feeds/photos_public.gne?id=72974131@N00&lang=en-us&format=json",
+					dataType: "jsonp",
+					jsonpCallback: "jsonFlickrFeed"  				
+				}).done(function(jsondata){
+					console.dir(jsondata);
+
+					//Looping through all of the images in the feed
+					// The images are in an array, stored in the key items
+					for (var i=0; i < jsondata.items.length; i++) {
+						//Found this by looking through the console dir of the object
+						var src = jsondata.items[i].media.m;
+						//Take url of image and create image tag, and append it to page
+						//problem solved - syntax - "wrap" instead of ".wrap"
+						$(".wrap").append($("<img />").attr("src", src));
+					};
+
+					//Need to setup slideshow after the images have been added to the page
+					$('.wrap').cycle({
+						fx: 'fade' // choose your transition type, ex: fade, scrollUp, shuffle, etc...
+					});
+					
+				});
+			}
+			
+			$("#loadgallery").click(makeAjaxRequest);
+	
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
