@@ -1,0 +1,1 @@
+//problem solved: "this" not given jquery selector - changed to "$(this)"

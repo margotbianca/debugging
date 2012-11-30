@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>jqueryparallex</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="author" content="The Chopping Block, Inc." />
+	<meta name="geo.country" content="US" />
+	<meta name="dc.language" content="en" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	
+	<link rel="stylesheet" href="styles.css" type="text/css" media="screen" charset="utf-8" />
+	
+	<style type="text/css" media="screen">		
+		/*local styles if any (quick tests and local only overrides)*/
+		.viewport{
+			position: relative;
+			width: 800px;
+			height: 420px;
+			overflow:hidden;
+			border: 1px solid black;
+		}
+		
+		.layer{
+			position: absolute;
+
+		}
+		
+		.one{
+			width: 860px;
+			height: 420px;
+			z-index: 90;
+		}
+		
+		.two{
+			width: 900px;
+		}
+		
+		.three{
+			width: 1700px;
+			z-index: 100;
+		}
+		
+		.four{
+			width: 2000px;
+			z-index: 110;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="wrap" >
+		Project: jqueryparallex
+		<div class="viewport">
+			<div class="layer one">
+				<img src="images/large_moon.png" style="margin-left: 400px" width="62" height="64" alt="Large Moon">
+			</div>
+			<div class="layer two">
+				<img src="images/sky.jpg" width="1400" height="420" alt="Sky">
+			</div>
+			<div class="layer three">
+				<img src="images/mountains.png" width="1700" height="420" alt="Mountains">
+			</div>
+			<div class="layer four">
+				<img src="images/robot.png" style="margin-left: 430px; margin-top: 300px" width="100"  alt="Robot">
+			</div>									
+		</div>
+	</div>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="jquery.event.frame.min.js" type="text/javascript" charset="utf-8"></script>
+	<!-- parallax script was not added -->
+	<script src="jquery.parallax.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script type="text/javascript" charset="utf-8">
+		$('.layer').parallax({mouseport: ".viewport" });	
+	</script>
+</body>
+</html>
